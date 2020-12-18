@@ -1,5 +1,7 @@
 package oop.makhlukhidup
 
+import java.io.File
+
 class Databasemakhlukhidup {
 
     var database:MutableMap<String, Makhlukhidup> = mutableMapOf()
@@ -27,6 +29,7 @@ class Databasemakhlukhidup {
 }
 
 fun main () {
+    var dm: Databasemakhlukhidup = Databasemakhlukhidup()
     do {
         print("command = ")
         var a = readLine()
@@ -48,26 +51,37 @@ fun main () {
             print("species = ")
             var h = readLine()
 
+            var tes = Makhlukhidup(a!!, b!!, c!!, d!!, e!!, f!!, g!!, h!!)
+            dm.addmakhlukhidup(tes)
 
-            var dm: Databasemakhlukhidup = Databasemakhlukhidup()
-            dm.addmakhlukhidup(Makhlukhidup(a!!, b!!, c!!, d!!, e!!, f!!, g!!, h!!))
-            dm.displayallmh()
+            var fileName = "/data/pandu/learnkotlin/src/main/kotlin/oop/makhlukhidup/makhlukhidup.txt"
+            var fileObject = File(fileName)
+            fileObject.appendText(tes.getstring() + "\n")
         }
 
-            if (a == "get makhluk hidup") {
-                print("get = ")
-                var dm: Databasemakhlukhidup = Databasemakhlukhidup()
-                var tes = readLine()
-                var coba = dm.getmakhlukhidup(tes!!)
-                coba!!.display()
+        if (a == "get makhluk hidup") {
+            print("get = ")
+            var tes = readLine()
+            var coba = dm.getmakhlukhidup(tes!!)
+            coba!!.display()
+        }
+        if (a == "remove") {
+            print("remove = ")
+            var tes = readLine()
+            var coba = dm.getmakhlukhidup(tes!!)
+            dm.removemakhlukhidup(coba!!)
+            dm.displayallmh()
+        }
+        if (a == "display all") {
+            dm.displayallmh()
+        }
+        if (a == "display text") {
+            val file = File("/data/pandu/learnkotlin/src/main/kotlin/oop/makhlukhidup/makhlukhidup.txt")
+            var bufferedReader = file.bufferedReader()
+            var text = bufferedReader.readLines()
+            for (line in text) {
+                println(line)
             }
-            if (a=="remove") {
-                print("remove = ")
-                var dm: Databasemakhlukhidup = Databasemakhlukhidup()
-                var tes = readLine()
-                var coba = dm.getmakhlukhidup(tes!!)
-                dm.removemakhlukhidup(coba!!)
-                dm.displayallmh()
-            }
-        } while (a != "quit")
-    }
+        }
+    } while (a != "quit")
+}

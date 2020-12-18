@@ -43,4 +43,9 @@ class Makhlukhidup {
         println(species)
     }
 
+    fun getstring ():String {
+        var a:String = kingdom + "->" + divisiofilum + "->" + subdivisiosubfilum + "->" + kelas + "->" + ordo + "->" + famili + "->" + genus + "->" + species
+        return a
+    }
+
 }
