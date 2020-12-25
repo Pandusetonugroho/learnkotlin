@@ -17,4 +17,5 @@ dependencies {
     // https://mvnrepository.com/artifact/khttp/khttp
     implementation group: 'khttp', name: 'khttp', version: '1.0.0'
 
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.11.1'
 }
