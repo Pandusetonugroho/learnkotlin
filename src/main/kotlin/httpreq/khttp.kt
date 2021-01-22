@@ -1,24 +1,7 @@
 package httpreq
 
-class people {
-    var nama = ""
-    var umur = 0
-
-    constructor(nama:String, umur:Int) {
-        this.nama=nama
-        this.umur=umur
-    }
-
-    override  fun toString():String{
-        return this.umur.toString()
-    }
-
-}
 
 fun main () {
-
-    var kukuh = people("kukuh", 9)
-    println(kukuh)
 
     val response = khttp.get(
         url = "https://detik.com/search/searchall",
@@ -28,5 +11,12 @@ fun main () {
     println("=========================================")
     println(response.text)
     println("========================================")
+
+    val response1 = khttp.post(
+        url = "http://httpbin.org/post",
+        json = mapOf("key1" to "value1", "keyn" to "valuen"))
+
+    println(response1.statusCode)
+    println(response1.text)
 
 }

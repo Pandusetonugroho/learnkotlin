@@ -1,6 +1,6 @@
 package learnjson
 
-class people {
+open class people {
     var nama: String = ("")
     var usia: Int = 0
     var alamat: String = ("")
